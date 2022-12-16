@@ -9,7 +9,7 @@ function App() {
   const [weatherData, setWeatherData] = React.useState()
   React.useEffect(() => {
     try{
-      fetch(`https://api.weatherapi.com/v1/forecast.json?key=994482bebcfb44da93222215221412&q=London&days=10&aqi=no&alerts=no`)
+      fetch(`https://api.weatherapi.com/v1/forecast.json?key=994482bebcfb44da93222215221412&q=${city}&days=10&aqi=no&alerts=no`)
         .then((res) =>{
           if(res.ok){
             return res.json()
