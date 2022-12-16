@@ -15,7 +15,7 @@ function App() {
             return res.json()
           }
           else{
-            throw 'Error getting weather data'
+            throw new Error('Error getting weather data')
           }
         }).then((data) => {
           setWeatherData(data)
@@ -51,6 +51,7 @@ function App() {
         return "Saturday"
       case 6:
         return "Sunday"
+      default: return "Monday"
     }
   }
 
@@ -86,9 +87,9 @@ function App() {
           <div>
             <p>3 Day Forecast</p>
             <div className="forecast-div">
-              {weatherData.forecast.forecastday.map((dayItem)=>{
+              {weatherData.forecast.forecastday.map((dayItem,index)=>{
                 return <div className="forecast-item">
-                <p className="forecast-item-date">{getForecastDay(dayItem.date)}</p>
+                <p key = {index} className="forecast-item-date">{getForecastDay(dayItem.date)}</p>
               </div>
               })}
             </div>
