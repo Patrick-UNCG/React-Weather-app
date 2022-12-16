@@ -52,7 +52,7 @@ input[type=text]:focus {
   flex-direction: column;
   align-items: center;
   color: black;
-  height: 80vh;
+  height: 70vh;
   border-radius: 0% 0% 50% 50% / 0% 0% 5% 5% ;
   box-shadow: 10px 10px rgba(0,0,0,.25);
 }
@@ -80,8 +80,6 @@ h1,h2{
 }
 
 .weather-icon{
-  height: 100px;
-  width: 100px;
   border-right: solid;
   margin-right: .5em;
 
@@ -115,7 +113,7 @@ h1,h2{
 
 #github-link{
   display: inline-block;
-  font-size: 1rem;
+  font-size: 2rem;
 }
 
 a:link {
@@ -138,8 +136,20 @@ a:visited {
 
 @media (min-width: 600px) {
   .App-header{
-    
-    
+    width: 600px;
+  }
+  .weather-data-sub-info2 p{
+    font-size: 1.25rem;
+  }
+  .weather-data-min-max, .weather-data-condition{
+    font-size: 1.75rem;
+  }
+  .weather-data-current-temp-div{
+    font-size: 2rem;
+  }
+  .weather-icon{
+    height: 100px;
+    width: 100px;
   }
 }
 
