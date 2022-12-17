@@ -2,19 +2,15 @@
   margin: 0;
 }
 body {
+  background: url("./images/night.jpg") no-repeat center center fixed;
   font-family: 'Ubuntu', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
 }
 
-html { 
-  background: url("./images/night.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -31,7 +27,7 @@ img.resize {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 2.5em auto;
+  margin: 0 auto;
 }
 
 form{
@@ -82,6 +78,10 @@ h1,h2{
   
 }
 
+.weather-temp{
+  font-size: 1.5rem;
+}
+
 .weather-data-current-temp-div{
   display: flex;
   align-items: center;
@@ -92,7 +92,6 @@ h1,h2{
 .weather-icon{
   border-right: solid;
   margin-right: .5em;
-
 }
 
 .weather-data-sub-info, .weather-data-sub-info2{
@@ -107,6 +106,16 @@ h1,h2{
 }
 .weather-data-min-max, .weather-data-condition{
   font-size: 1rem;
+}
+
+.forecast-title{
+  margin-bottom: .75em;
+}
+
+.forecast-div{
+  display: flex;
+  justify-content: space-evenly;
+  font-size: .5rem;
 }
 
 .footer {
@@ -149,6 +158,13 @@ a:visited {
     width: 600px;
     height: 800px;
   }
+  .weather-data{
+    width: 400px;
+
+  }
+  .weather-temp{
+    font-size: 2.75rem;
+  }
   .weather-data-sub-info2 p{
     font-size: 1.25rem;
   }
@@ -165,6 +181,18 @@ a:visited {
   .weather-data-sub-info, .weather-data-sub-info2{
     justify-content: space-between;
     text-align: center;
+  }
+  .forecast-div{
+    justify-content: space-between;
+    font-size: 1.25rem;
+    padding: 0;
+  }
+  .forecast-title{
+    font-size: 1.75rem;
+    margin-bottom: 1.5em;
+  }
+  .forecast-item{
+    max-width: 100px;
   }
 }
 

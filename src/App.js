@@ -1,4 +1,5 @@
 import React from "react"
+import sunny from "./images/sunny.jpg"
 
 function App() {
   const cityInput = document.getElementById("city-input")
@@ -32,6 +33,8 @@ function App() {
   function submit(e){
     e.preventDefault()
     setCity(cityInput.value)
+    console.log(weatherData.current.is_day)
+    document.body.style.background = `url(${sunny}) no-repeat center center fixed`
   }
 
   function getForecastDay(date){
@@ -55,6 +58,8 @@ function App() {
     }
   }
 
+  //linear-gradient(18deg, rgba(205,180,219,1) 0%, rgba(255,175,204,1) 39%, rgba(162,210,255,1) 67%) no-repeat center center fixed
+
   return (
     <div className="App">
       <form onSubmit={submit}>
@@ -64,10 +69,10 @@ function App() {
       <header className="App-header">
         {!isError ? 
         <div className="weather-data">
-          <p className="city-name">{weatherData.location.name}</p>
+          <p className="city-name">{weatherData.location.name}, {weatherData.location.region}, {weatherData.location.country}</p>
           <div className="weather-data-current-temp-div">
             <img className='weather-icon' src= {weatherData.current.condition.icon} alt="current weather icon"/>
-            <h1>{Math.round(weatherData.current.temp_f)}°F</h1>
+            <h1 className='weather-temp'>{Math.round(weatherData.current.temp_f)}°F</h1>
           </div>
           <h2 className="weather-data-condition">{weatherData.current.condition.text}</h2>
           <div className="weather-data-sub-info">
@@ -85,11 +90,14 @@ function App() {
             </div>
           </div>
           <div>
-            <p>3 Day Forecast</p>
+            <p className="forecast-title">3 Day Forecast</p>
             <div className="forecast-div">
               {weatherData.forecast.forecastday.map((dayItem,index)=>{
                 return <div className="forecast-item">
-                <p key = {index} className="forecast-item-date">{getForecastDay(dayItem.date)}</p>
+                <p className="forecast-item-date">{getForecastDay(dayItem.date)}</p>
+                <img className='forecast-item-icon' src= {dayItem.day.condition.icon} alt="current weather icon"/>
+                <p className="forecast-item-temp">{Math.round(dayItem.day.avgtemp_f)}°F</p>
+                <p className="forecast-item-temp">{dayItem.day.condition.text}</p>
               </div>
               })}
             </div>
