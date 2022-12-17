@@ -9,7 +9,7 @@ body {
 }
 
 html { 
-  background: linear-gradient(18deg, rgba(205,180,219,1) 0%, rgba(255,175,204,1) 39%, rgba(162,210,255,1) 67%) no-repeat center center fixed;
+  background: url("./images/night.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -97,7 +97,7 @@ h1,h2{
 
 .weather-data-sub-info, .weather-data-sub-info2{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-top: 1.5em;
   margin-bottom: 1.5em;
 }
@@ -161,6 +161,10 @@ a:visited {
   .weather-icon{
     height: 100px;
     width: 100px;
+  }
+  .weather-data-sub-info, .weather-data-sub-info2{
+    justify-content: space-between;
+    text-align: center;
   }
 }
 
