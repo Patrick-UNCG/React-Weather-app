@@ -74,7 +74,7 @@ h1,h2{
 }
 
 .city-name{
-  font-size: 1.25rem;
+  font-size: .75rem;
   
 }
 
@@ -157,6 +157,10 @@ a:visited {
   .App-header{
     width: 600px;
     height: 800px;
+  }
+  .city-name{
+    font-size: 1.25rem;
+    
   }
   .weather-data{
     width: 400px;
