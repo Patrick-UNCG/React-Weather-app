@@ -3,6 +3,8 @@ import sunny from "./images/sunny.jpg"
 import night from "./images/night.jpg"
 import cloudyDay from "./images/cloudy.jpg"
 import cloudyNight from "./images/cloudynight.webp"
+import { motion } from "framer-motion"
+
 function App() {
   const cityInput = document.getElementById("city-input")
   const [city, setCity] = React.useState("London")
@@ -97,11 +99,17 @@ function App() {
 
   return (
     <div className="App" style={{backgroundImage: `url(${background})`, backgroundSize:"cover"}}>
-      <form onSubmit={submit}>
+      <motion.form
+       initial={{ opacity: 0, y: -500 }}
+       animate={{ opacity: 1, y: 0 }}
+       onSubmit={submit}>
           <input name="city" id="city-input" type="text" placeholder="Enter a city" required>
           </input>
-        </form>
-      <header className="App-header">
+        </motion.form>
+      <motion.header
+      initial={{ opacity: 0, y: -500 }}
+      animate={{ opacity: 1, y: 0 }}
+       className="App-header">
         {!isError ? 
         <div className="weather-data">
           <p className="city-name">{weatherData.location.name}, {weatherData.location.region}, {weatherData.location.country}</p>
@@ -116,11 +124,11 @@ function App() {
           </div>
           <div className="weather-data-sub-info2">
             <div >
-              <h2>{Math.round(weatherData.current.feelslike_f)}°F</h2>
+              <h1>{Math.round(weatherData.current.feelslike_f)}°F</h1>
               <p className="weather-data-p">Feels like</p>
             </div>
             <div>
-              <h2>{weatherData.current.humidity}%</h2>
+              <h1>{weatherData.current.humidity}%</h1>
               <p className="weather-data-p">Humidity</p>
             </div>
           </div>
@@ -139,7 +147,7 @@ function App() {
           </div>
         </div> 
         : <h1>...</h1>}
-      </header>
+      </motion.header>
       
     </div>
   );
