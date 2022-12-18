@@ -1,10 +1,14 @@
 import React from "react"
 import sunny from "./images/sunny.jpg"
-
+import night from "./images/night.jpg"
+import cloudyDay from "./images/cloudy.jpg"
+import cloudyNight from "./images/cloudynight.webp"
 function App() {
   const cityInput = document.getElementById("city-input")
   const [city, setCity] = React.useState("London")
   const [isError, setIsError] = React.useState(true)
+  const [isDay, setIsDay] = React.useState(0)
+  let background = night;
   
   
   const [weatherData, setWeatherData] = React.useState()
@@ -20,6 +24,7 @@ function App() {
           }
         }).then((data) => {
           setWeatherData(data)
+          setIsDay(data.current.is_day)
           setIsError(false)
         }).catch((error) => {
           setIsError(true)
@@ -30,11 +35,39 @@ function App() {
     }
   }, [city])
 
+  function getBackground(){
+    console.log(weatherData.current.condition.code)
+    const x = weatherData.current.condition.code
+    switch(true){
+      case (x < 1001): 
+        if(isDay===0){
+          background=night
+          break
+        }
+        else{
+          background=sunny
+          break
+        }
+      case (x>=1003 && x <= 1030):
+        if(isDay===0){
+          background=cloudyNight
+          break
+        }
+        else{
+          background=cloudyDay
+          break
+        }
+      default: background = sunny
+    }
+  }
+  if(weatherData){
+    getBackground()
+  }
+
   function submit(e){
     e.preventDefault()
     setCity(cityInput.value)
-    console.log(weatherData.current.is_day)
-    document.body.style.background = `url(${sunny}) no-repeat center center fixed`
+    console.log(isDay)
   }
 
   function getForecastDay(date){
@@ -59,9 +92,11 @@ function App() {
   }
 
   //linear-gradient(18deg, rgba(205,180,219,1) 0%, rgba(255,175,204,1) 39%, rgba(162,210,255,1) 67%) no-repeat center center fixed
+  //isDay === 0 ? `url(${night})` : `url(${sunny})`
+  //<footer className="footer"><a href="https://github.com/Patrick-UNCG/React-Weather-app" className='footer-link'><i id="github-link" className="fa-brands fa-github"></i></a></footer>
 
   return (
-    <div className="App">
+    <div className="App" style={{backgroundImage: `url(${background})`, backgroundSize:"cover"}}>
       <form onSubmit={submit}>
           <input name="city" id="city-input" type="text" placeholder="Enter a city" required>
           </input>
@@ -105,9 +140,7 @@ function App() {
         </div> 
         : <h1>...</h1>}
       </header>
-      <footer className="footer">
-        <a href="https://github.com/Patrick-UNCG/React-Weather-app" className='footer-link'><i id="github-link" className="fa-brands fa-github"></i></a>
-      </footer>
+      
     </div>
   );
 }
