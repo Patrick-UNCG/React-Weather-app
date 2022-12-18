@@ -65,16 +65,12 @@ input[type=text]:focus {
 
 h1,h2{
   margin: 0;
-  text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
 }
 
 .weather-data{
   width: 300px;
   margin: 2em auto;
   text-align: center;
-  text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
-             0px 8px 13px rgba(0,0,0,0.1),
-             0px 18px 23px rgba(0,0,0,0.1);
 }
 
 
@@ -105,6 +101,10 @@ h1,h2{
   margin-bottom: 1.5em;
 }
 
+.weather-data-sub-info2 h1{
+  font-size: 1.25rem;
+}
+
 .weather-data-sub-info2 p{
   font-size: .75rem;
 }
@@ -120,6 +120,10 @@ h1,h2{
   display: flex;
   justify-content: space-evenly;
   font-size: .5rem;
+}
+
+.weather-temp, .weather-data-sub-info2 h1, .weather-data-condition{
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
 }
 
 .footer {
@@ -174,6 +178,9 @@ a:visited {
   }
   .weather-data-sub-info2 p{
     font-size: 1.25rem;
+  }
+  .weather-data-sub-info2 h1{
+    font-size: 2.25rem;
   }
   .weather-data-min-max, .weather-data-condition{
     font-size: 1.75rem;
