@@ -106,11 +106,12 @@ function App() {
           <input name="city" id="city-input" type="text" placeholder="Enter a city" required>
           </input>
         </motion.form>
+      {!isError ? 
       <motion.header
+      key={city}
       initial={{ opacity: 0, y: -500 }}
       animate={{ opacity: 1, y: 0 }}
        className="App-header">
-        {!isError ? 
         <div className="weather-data">
           <p className="city-name">{weatherData.location.name}, {weatherData.location.region}, {weatherData.location.country}</p>
           <div className="weather-data-current-temp-div">
@@ -146,9 +147,8 @@ function App() {
             </div>
           </div>
         </div> 
-        : <h1>...</h1>}
       </motion.header>
-      
+      : <h1>...</h1>}
     </div>
   );
 }
