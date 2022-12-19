@@ -14,10 +14,6 @@ code {
     monospace;
 }
 
-img.resize {
-  width:540px; /* you can use % */
-  height: auto;
-}
 
 .App {
   font-family: 'Ubuntu', sans-serif;
@@ -36,31 +32,26 @@ form{
   margin: 2.5em auto;
 }
 
-input, form button{
+input{
   margin-right: 2em;
   border-radius: 0% 0% 50% 50% / 0% 0% 5% 5% ;
   box-shadow: 10px 10px rgba(0,0,0,.25);
 }
 
-input[type=text] {
-  transition: width 0.4s ease-in-out;
-}
-
-input[type=text]:focus {
-  width: 100%;
-}
-
 .App-header {
   width: 325px;
-  background: whitesmoke;
+  background: gray;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: black;
+  color: white;
   height: 480px;
   border-radius: 0% 0% 50% 50% / 0% 0% 5% 5% ;
   box-shadow: 10px 10px rgba(0,0,0,.25);
-  
+}
+
+i{
+  cursor:pointer;
 }
 
 h1,h2{
@@ -123,7 +114,7 @@ h1,h2{
 }
 
 .weather-temp, .weather-data-sub-info2 h1, .weather-data-condition{
-  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+  text-shadow: 1px 2px 1.5px rgba(0,0,0,0.3);
 }
 
 .footer {
@@ -209,3 +200,62 @@ a:visited {
   }
 }
 
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 17px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
