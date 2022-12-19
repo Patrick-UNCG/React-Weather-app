@@ -139,24 +139,30 @@ function App() {
       animate={{ opacity: 1, y: 0 }}
        className="App-header" style={{color: isDarkMode ? "white":"black", background: isDarkMode?"gray" : "white"}}>
         <div className="weather-data">
+          <div className="weather-data-title">
           <p className="city-name">{weatherData.location.name}, {weatherData.location.region}, {weatherData.location.country}</p>
-          <label class="switch">
-            <input type="checkbox" onClick={changeMeasurement}/>
-            <span class="slider round"></span>
-          </label>
-          {isDarkMode ? <i onClick={changeLightMode} class="fa-solid fa-lightbulb"></i>:<i onClick={changeLightMode} class="fa-regular fa-lightbulb"></i>}
+            <div className="switch-bulb">
+              <label class="switch">
+                <input type="checkbox" onClick={changeMeasurement}/>
+                <span class="slider round"></span>
+              </label>
+              {isDarkMode ? <i onClick={changeLightMode} class="fa-solid fa-lightbulb"></i>:<i onClick={changeLightMode} class="fa-regular fa-lightbulb"></i>}
+            </div>
+          </div>
           <div className="weather-data-current-temp-div">
             <img className='weather-icon' src= {weatherData.current.condition.icon} alt="current weather icon"/>
             <h1 className='weather-temp'>{!isCel ? Math.round(weatherData.current.temp_f) + "°F" : Math.round(weatherData.current.temp_c) + "°C"} </h1>
           </div>
           <h2 className="weather-data-condition">{weatherData.current.condition.text}</h2>
           <div className="weather-data-sub-info">
-            <p className="weather-data-min-max">Max: {Math.round(weatherData.forecast.forecastday[0].day.maxtemp_f)}°F</p>
-            <p className="weather-data-min-max">Min: {Math.round(weatherData.forecast.forecastday[0].day.mintemp_f)}°F</p>
+            <p className="weather-data-min-max">Max: {!isCel ? Math.round(weatherData.forecast.forecastday[0].day.maxtemp_f)+ "°F": 
+            Math.round(weatherData.forecast.forecastday[0].day.maxtemp_c)+ "°C"}</p>
+            <p className="weather-data-min-max">Min: {!isCel ? Math.round(weatherData.forecast.forecastday[0].day.mintemp_f)+ "°F": 
+            Math.round(weatherData.forecast.forecastday[0].day.mintemp_c)+ "°C"}</p>
           </div>
           <div className="weather-data-sub-info2">
             <div >
-              <h1>{Math.round(weatherData.current.feelslike_f)}°F</h1>
+              <h1>{!isCel ? Math.round(weatherData.current.feelslike_f)+ "°F" : Math.round(weatherData.current.feelslike_c)+ "°C"}</h1>
               <p className="weather-data-p">Feels like</p>
             </div>
             <div>
@@ -171,7 +177,7 @@ function App() {
                 return <div className="forecast-item">
                 <p className="forecast-item-date">{getForecastDay(dayItem.date)}</p>
                 <img className='forecast-item-icon' src= {dayItem.day.condition.icon} alt="current weather icon"/>
-                <p className="forecast-item-temp">{Math.round(dayItem.day.avgtemp_f)}°F</p>
+                <p className="forecast-item-temp">{!isCel ? Math.round(dayItem.day.avgtemp_f)+ "°F" : Math.round(dayItem.day.avgtemp_c)+ "°C"}</p>
                 <p className="forecast-item-temp">{dayItem.day.condition.text}</p>
               </div>
               })}

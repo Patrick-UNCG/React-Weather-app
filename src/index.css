@@ -52,6 +52,7 @@ input{
 
 i{
   cursor:pointer;
+  margin-top: 1em;
 }
 
 h1,h2{
@@ -64,6 +65,16 @@ h1,h2{
   text-align: center;
 }
 
+.weather-data-title{
+  display: flex;
+  justify-content: space-between;
+}
+
+.switch-bulb{
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
 
 .city-name{
   font-size: .75rem;
@@ -71,6 +82,7 @@ h1,h2{
 
 .weather-temp{
   font-size: 1.5rem;
+  width: 80px;
 }
 
 .weather-data-current-temp-div{
