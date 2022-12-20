@@ -187,7 +187,7 @@ function App() {
           </div>
         </div> 
       </motion.header>
-      : <h1>...</h1>}
+      : <h1 style={{color:"white"}}>CITY NOT FOUND!</h1>}
     </div>
   );
 }
