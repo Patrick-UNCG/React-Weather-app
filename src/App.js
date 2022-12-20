@@ -138,16 +138,18 @@ function App() {
       initial={{ opacity: 0, y: -500 }}
       animate={{ opacity: 1, y: 0 }}
        className="App-header" style={{color: isDarkMode ? "white":"black", background: isDarkMode?"gray" : "white"}}>
-        <div className="weather-data">
-          <div className="weather-data-title">
-          <p className="city-name">{weatherData.location.name}, {weatherData.location.region}, {weatherData.location.country}</p>
-            <div className="switch-bulb">
+        <div className="switch-bulb">
+              {isDarkMode ? <i onClick={changeLightMode} class="fa-solid fa-lightbulb"></i>:<i onClick={changeLightMode} class="fa-regular fa-lightbulb"></i>}
+              <span>F-C</span>
               <label class="switch">
+                
                 <input type="checkbox" onClick={changeMeasurement}/>
                 <span class="slider round"></span>
               </label>
-              {isDarkMode ? <i onClick={changeLightMode} class="fa-solid fa-lightbulb"></i>:<i onClick={changeLightMode} class="fa-regular fa-lightbulb"></i>}
-            </div>
+        </div>
+        <div className="weather-data">
+          <div className="weather-data-title">
+          <p className="city-name">{weatherData.location.name}, {weatherData.location.region}, {weatherData.location.country}</p>
           </div>
           <div className="weather-data-current-temp-div">
             <img className='weather-icon' src= {weatherData.current.condition.icon} alt="current weather icon"/>

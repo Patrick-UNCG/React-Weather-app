@@ -52,7 +52,8 @@ input{
 
 i{
   cursor:pointer;
-  margin-top: 1em;
+  margin: .5em 0;
+  font-size: .75rem;
 }
 
 h1,h2{
@@ -60,20 +61,19 @@ h1,h2{
 }
 
 .weather-data{
-  width: 300px;
-  margin: 2em auto;
+  width: 230px;
+  margin: 0;
   text-align: center;
-}
-
-.weather-data-title{
-  display: flex;
-  justify-content: space-between;
 }
 
 .switch-bulb{
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  margin: 0;
+  margin-left: auto; 
+  margin-right: .5em;
+  font-size: .5em;
 }
 
 .city-name{
@@ -125,7 +125,7 @@ h1,h2{
   font-size: .5rem;
 }
 
-.weather-temp, .weather-data-sub-info2 h1, .weather-data-condition{
+.weather-data{
   text-shadow: 1px 2px 1.5px rgba(0,0,0,0.3);
 }
 
@@ -162,6 +162,66 @@ a:visited {
 }
 .footer-link:visited{
   color: rgba(205,180,219,1);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 15px;
+  height: 8.5px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 6.5px;
+  width: 6.5px;
+  left: 1px;
+  bottom: 1px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(6.5px);
+  -ms-transform: translateX(6.5px);
+  transform: translateX(6.5px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 17px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
 
 @media (min-width: 700px) {
@@ -210,64 +270,27 @@ a:visited {
   .forecast-item{
     max-width: 100px;
   }
+  .switch {
+    width: 30px;
+    height: 17px;
+  }
+  .slider:before {
+    height: 13px;
+    width: 13px;
+    left: 2px;
+    bottom: 2px;
+  }
+  input:checked + .slider:before {
+    -webkit-transform: translateX(13px);
+    -ms-transform: translateX(13px);
+    transform: translateX(13px);
+  }
+  .switch-bulb{
+    font-size: 1rem;
+  }
+
+  i{
+    font-size:1rem;
+  }
 }
 
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 30px;
-  height: 17px;
-}
-
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 13px;
-  width: 13px;
-  left: 2px;
-  bottom: 2px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(13px);
-  -ms-transform: translateX(13px);
-  transform: translateX(13px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 17px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
